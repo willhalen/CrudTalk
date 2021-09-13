@@ -1,0 +1,126 @@
+
+<div class="container-fluid">
+<div class="container p-5" *ngIf="visibilidadeTabela">
+  <div class="border border-light rounded p-2">
+    <button type="button" class="btn btn-sm btn-secondary" (click)= "ExibirFormularioCadastro()">
+      Novo Registro
+    </button>
+  <hr/>
+    <table class="table table-striped table-hover table-sm" *ngIf="pessoas">
+      <tr class="thead-light">
+          <th>Nome</th>
+          <th>Sobrenome</th>
+          <th>Idade</th>
+          <th>Profissão</th>
+          <th>Data</th>
+          <th>Titulo</th>
+          <th>Descrição</th>
+          <th>Legislação</th>
+          <th>Type</th>
+          <th>Time</th>
+          <th>Final</th>
+          <th>Variaveis</th>
+          <th>Ações</th>
+          <th>&nbsp;</th>
+      </tr>
+      <tr *ngFor="let pessoa of pessoas">
+          <td>{{pessoa.nome}}</td>
+          <td>{{pessoa.sobrenome}}</td>
+          <td>{{pessoa.idade}}</td>
+          <td>{{pessoa.profissao}}</td>
+          <td>{{pessoa.date}}</td>
+          <td>{{pessoa.title}}</td>
+          <td>{{pessoa.description}}</td>
+          <td>{{pessoa.legislation}}</td>
+          <td>{{pessoa.type}}</td>
+          <td>{{pessoa.startTime}}</td>
+          <td>{{pessoa.endTime}}</td>
+          <td>{{pessoa.variableDates}}</td>
+          <td>
+            <button type="button" class="btn btn-sm btn-outline-info" (click)="ExibirFormularioAtualizado(pessoa.pessoaId)">Atualizar</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-sm btn-outline-danger" (click)="ExcluirPessoa(pessoa.pessoaId)">Excluir</button>
+          </td>
+      </tr>
+
+    </table>
+  </div>
+</div>
+
+<div class="container p-5" *ngIf="visibilidadeFormulario">
+    <div class="row">
+      <div class="col-12 border boder-light rounded p-5 shadow" *ngIf="formulario">
+        <div class="col-lg-6">
+          <h6>{{tituloFormulario}}</h6>
+          <hr/>
+          <form [formGroup]="formulario" (ngSubmit)="EnviarFormulario()">
+            <div class="form-group">
+              <label>Nome</label>
+              <input type="text" class="form-control form-control-sm" formControlName="nome">
+            </div>
+            <div class="form-group">
+              <label>Sobrenome</label>
+              <input type="text" class="form-control form-control-sm" formControlName="sobrenome">
+            </div>
+            <div class="form-group">
+              <label>Idade</label>
+              <input type="text" class="form-control form-control-sm" formControlName="idade">
+            </div>
+            <div class="form-group">
+              <label>Profissão</label>
+              <input type="text" class="form-control form-control-sm" formControlName="profissao">
+            </div>
+            <label>{{tituloFeriados}}</label>
+            <div class="form-group">
+              <label>Titulo</label>
+              <input type="text" id="title" class="form-control form-control-sm" formControlName="title">
+            </div>
+
+            <div class="form-group">
+              <label>Data</label>
+              <input type="text" id="data" class="form-control form-control-sm" formControlName="date">
+            </div>
+
+            <div class="form-group">
+              <label>Legislação</label>
+              <input type="text" id="legislation" class="form-control form-control-sm" formControlName="legislation">
+            </div>
+            <div class="form-group">
+              <label>Descrição</label>
+              <input type="text" id="description" class="form-control form-control-sm" formControlName="description">
+            </div>
+            <div class="form-group">
+              <label>Type</label>
+              <input type="text" id="type" class="form-control form-control-sm" formControlName="type">
+            </div>
+            <div class="form-group">
+              <label>Tempo</label>
+              <input type="text" id="startTime" class="form-control form-control-sm" formControlName="startTime">
+            </div>
+            <div class="form-group">
+              <label>Final/Tempo</label>
+              <input type="text" id="endTime" class="form-control form-control-sm" formControlName="endTime">
+            </div>
+            <div class="form-group">
+              <label>Datas Variaveis</label>
+              <input type="text" id="variableDates" class="form-control form-control-sm" formControlName="variableDates">
+            </div>
+
+            <div class="container">
+              <div class="clearFix">&nbsp;</div>
+              <div class="row">
+                <div class="col-4">
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Salvar</button>
+                </div>
+                <div class="col-4">
+                  <button type="button" class="btn btn-sm btn-light" (click)="Voltar()">Voltar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
