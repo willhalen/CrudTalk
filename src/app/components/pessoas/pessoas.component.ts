@@ -127,10 +127,6 @@ export class PessoasComponent implements OnInit {
     this.visibilidadeFormulario = false;
   }
 
-  ExibirConfirmacaoExclusao( pessoaId: any, nome: any, conteudoModal: TemplateRef<any>): void {
-    this.pessoaId = pessoaId;
-    this.nomePessoa = this.nomePessoa;
-  }
 
   ExcluirPessoa(pessoaId: number){
     this.pessoasService.ExcluirPessoa(pessoaId).subscribe(resultado => {
